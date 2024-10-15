@@ -15,8 +15,8 @@ local instructions = {
     "To win the game, delete the whole paragraph in one go inbetween the stars (asterisks). Use motions like (Vkd, Vjd)",
 }
 
-local InsidePDelete = {}
-function InsidePDelete:new(difficulty, window)
+local InsideDelete = {}
+function InsideDelete:new(difficulty, window)
     log.info("New", difficulty, window)
     local round = {
         window = window,
@@ -29,18 +29,18 @@ function InsidePDelete:new(difficulty, window)
     return setmetatable(round, self)
 end
 
-function InsidePDelete:getInstructions()
+function InsideDelete:getInstructions()
     return instructions
 end
 
-function InsidePDelete:getConfig()
+function InsideDelete:getConfig()
     log.info("getConfig", self.difficulty, GameUtils.difficultyToTime[self.difficulty])
     return {
         roundTime = GameUtils.difficultyToTime[self.difficulty],
     }
 end
 
-function InsidePDelete:checkForWin()
+function InsideDelete:checkForWin()
     local lines = self.window.buffer:getGameLines()
     local found = false
     local idx = 1
@@ -57,15 +57,15 @@ function InsidePDelete:checkForWin()
     return not found
 end
 
-function InsidePDelete:render()
+function InsideDelete:render()
     local paragraphLength = math.random(2, 5)
-    local lines = GameUtils.createEmpty(20)
-    local deleteMeIdx = math.random(2, 20 - paragraphLength)
-    local goHigh = deleteMeIdx < 17 and math.random() > 0.5
+    local lines = GameUtils.createEmpty(20 + #instructions)
+    local deleteMeIdx = math.random(2, 20 + #instructions - paragraphLength)
+    local goHigh = deleteMeIdx < 17 + #instructions and math.random() > 0.5
 
     local cursorIdx
     if goHigh then
-        cursorIdx = math.random(deleteMeIdx + 1, 20)
+        cursorIdx = math.random(deleteMeIdx + 1, 20 + #instructions)
     else
         cursorIdx = math.random(1, deleteMeIdx - 1)
     end
@@ -80,8 +80,8 @@ function InsidePDelete:render()
     return lines, cursorIdx
 end
 
-function InsidePDelete:name()
-    return "insidepdelete"
+function InsideDelete:name()
+    return "insidedelete"
 end
 
-return InsidePDelete
+return InsideDelete
