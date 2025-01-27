@@ -1,3 +1,13 @@
+# Notes from Clineza
+This is a forked repository from the original vim-be-good created by ThePrimeagen. This fork includes new games that I have coded when referencing the games created by ThePrimeagen.
+New Games Include:
+- indent
+- letsmoveit
+- pdelete
+
+Start up the game vim-be-good using my fork to test the new games! Thanks for playing!
+
+
 # vim-be-good
 
 Vim be good is a plugin designed to make you better at vim by creating a game
