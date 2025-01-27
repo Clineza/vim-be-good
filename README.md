@@ -1,5 +1,6 @@
 # Notes from Clineza
-This is a forked repository from the original vim-be-good created by ThePrimeagen. This fork includes new games that I have coded when referencing the games created by ThePrimeagen.
+This is a forked repository from the original vim-be-good created by ThePrimeagen. This fork includes new games that I have coded. The new games use
+a similar code structure to the games made by ThePrimeagen within the original vim-be-good.
 
 New Games Include:
 - indent
